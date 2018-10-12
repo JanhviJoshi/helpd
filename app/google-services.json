@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "95837858850",
+    "firebase_url": "https://helpd-f55a3.firebaseio.com",
+    "project_id": "helpd-f55a3",
+    "storage_bucket": "helpd-f55a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95837858850:android:e21a79c97a571c5d",
+        "android_client_info": {
+          "package_name": "com.example.user.helpd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95837858850-jus8t7cf1sk06e0pcrutmse5u4l64j83.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.helpd",
+            "certificate_hash": "2d90a29b68fe4915ba83fcd472a2539efca03c2f"
+          }
+        },
+        {
+          "client_id": "95837858850-mg22rbhcvtv5sidr60vrlhnr05qg08e2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkR-m-JdHsDhvn00or3NkWXslsMuCfDpA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95837858850-mg22rbhcvtv5sidr60vrlhnr05qg08e2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
