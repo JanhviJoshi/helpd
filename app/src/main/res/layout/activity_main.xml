@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:text="LOGIN"
             android:textSize="20dp"
-            android:id="@+id/login"/>
+            android:id="@+id/login"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/ques1"
@@ -49,19 +50,19 @@
             android:id="@+id/rad_help_pref">
 
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cleaning"
                 android:id="@+id/clean"/>
 
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cooking"
                 android:id="@+id/cook"/>
 
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Washing"
                 android:id="@+id/wash"/>
@@ -83,13 +84,13 @@
             android:id="@+id/rad_time_pref">
 
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="9:00 A.M.- 10 A.M."
                 android:id="@+id/morn"/>
 
             <RadioButton
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3:00 P.M. - 4:00 P.M."
                 android:id="@+id/eve"/>
