@@ -30,10 +30,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="Start"
             android:textSize="20dp"
-            android:id="@+id/login"
-            android:visibility="invisible"/>
+            android:id="@+id/login"/>
 
         <TextView
             android:id="@+id/ques1"

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         /***** applying toolbar as the app bar  and setting the hamburger icon *****/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         /*************************************************************************/
-
 
         radioGroup1= (RadioGroup)findViewById(R.id.rad_help_pref);
         radioGroup2= (RadioGroup)findViewById(R.id.rad_time_pref);
@@ -82,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 databaseReference= FirebaseDatabase.getInstance().getReference();
                 userDetails user1= new userDetails();
                 //pass the details of user to database keeping pref as null
+                //intent for login page
+                Intent l=new Intent(getBaseContext(),login_page.class);
+                startActivity(l);
 
             }
         });
@@ -122,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("preference",user2.getHelpPref());
                 i.putExtra("timings", user2.getTimings());
                 startActivity(i);
+
+
+
             }
         });
 
