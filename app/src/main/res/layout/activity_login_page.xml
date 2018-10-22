@@ -22,6 +22,7 @@
         android:padding="16dp"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textSize="20sp"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,8 +72,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/edit_txt"
             android:id="@+id/username"
-            android:padding="10dp"
-            android:textColorHint="#111111" />
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/contact"
@@ -82,8 +82,8 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/edit_txt"
             android:hint="Contact"
+            android:maxLength="10"
             android:padding="10dp"
-            android:textColorHint="#111111"
             android:textSize="20dp" />
 
         <EditText
@@ -95,7 +95,6 @@
             android:background="@drawable/edit_txt"
             android:hint="Address"
             android:padding="10dp"
-            android:textColorHint="#111111"
             android:textSize="20dp" />
 
         <EditText
@@ -107,7 +106,6 @@
             android:background="@drawable/edit_txt"
             android:hint="Landmark"
             android:padding="10dp"
-            android:textColorHint="#111111"
             android:textSize="20dp" />
 
         <EditText
@@ -118,7 +116,6 @@
             android:background="@drawable/edit_txt"
             android:hint="City"
             android:padding="10dp"
-            android:textColorHint="#111111"
             android:textSize="20dp" />
 
         <EditText
@@ -129,8 +126,8 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/edit_txt"
             android:hint="Pincode"
+            android:maxLength="6"
             android:padding="10dp"
-            android:textColorHint="#111111"
             android:textSize="20dp" />
     </LinearLayout>
 
