@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
-                //enter code for what to do when item selected
+                //enter code for what to do when item in nav drawer selected
                 //use if else here according to item selected
 
                 return true;
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Code here executes on main thread after user presses button
+                // Code here executes on main thread after user presses submit button
                 /*** Getting help preference ***/
                 databaseReference = FirebaseDatabase.getInstance().getReference();
                 int id1= radioGroup1.getCheckedRadioButtonId();
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                                     break;
                 }
 
+                /*** getting time pref ***/
                 int id2= radioGroup2.getCheckedRadioButtonId();
                 switch(id2)
                 {
