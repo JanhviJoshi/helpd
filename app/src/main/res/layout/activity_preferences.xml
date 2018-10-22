@@ -4,94 +4,162 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Preferences">
+    tools:context=".login_page">
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/btn_bg"
+        android:paddingLeft="50sp"
+        android:paddingRight="50sp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="#fafafa"
+        android:padding="16dp"
+        android:textColorHighlight="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!-- style="?android:attr/borderlessButtonStyle" -->
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="199dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:padding="5sp"
+        android:text="SignUp"
+        android:textColor="#111111"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="375dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="vertical"
+        android:paddingLeft="50sp"
+        android:paddingTop="0sp"
+        android:paddingRight="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <EditText
+            android:hint="Username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_txt"
+            android:id="@+id/username"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_txt"
+            android:hint="Contact"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_txt"
+            android:hint="Address"
+            android:padding="10dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/landmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_txt"
+            android:hint="Landmark"
+            android:padding="10dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_txt"
+            android:hint="City"
+            android:padding="10dp"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/pincode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_txt"
+            android:hint="Pincode"
+            android:maxLength="6"
+            android:padding="10dp"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="30dp">
+        app:layout_constraintGuide_begin="192dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start"
-            android:textSize="20dp"
-            android:id="@+id/login"
-            android:visibility="invisible"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="255dp" />
 
-        <TextView
-            android:id="@+id/ques1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="What kind of help are you looking for?"
-            android:textSize="20dp" />
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:id="@+id/rad_help_pref">
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
 
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cleaning"
-                android:id="@+id/clean"/>
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cooking"
-                android:id="@+id/cook"/>
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Washing"
-                android:id="@+id/wash"/>
-
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/ques2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Please enter your time preference:"
-            android:textSize="20dp" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:id="@+id/rad_time_pref">
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="9:00 A.M.- 10 A.M."
-                android:id="@+id/morn"/>
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="3:00 P.M. - 4:00 P.M."
-                android:id="@+id/eve"/>
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Submit"
-            android:textSize="15dp" />
-
-        <!-- the main activity content goes here -->
-    </LinearLayout>
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>
