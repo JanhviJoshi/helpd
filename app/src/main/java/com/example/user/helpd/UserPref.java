@@ -3,16 +3,16 @@ package com.example.user.helpd;
 public class UserPref {
 
     private String helpPref;
-    private String timings;
+    private int timings;
 
     public UserPref() {}
 
-    public UserPref(String helpPref, String timings){
+    public UserPref(String helpPref, int timings){
         this.helpPref= helpPref;
         this.timings= timings;
     }
 
-    public String getTimings() {
+    public int getTimings() {
         return timings;
     }
 
@@ -20,7 +20,7 @@ public class UserPref {
         return helpPref;
     }
 
-    public void setTimings(String timings) {
+    public void setTimings(int timings) {
         this.timings = timings;
     }
 

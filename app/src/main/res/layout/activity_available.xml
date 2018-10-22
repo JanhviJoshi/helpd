@@ -7,10 +7,9 @@
     tools:context=".Available">
 
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:id="@+id/text"/>
+        android:id="@+id/listview">
+    </ListView>
 </android.support.constraint.ConstraintLayout>

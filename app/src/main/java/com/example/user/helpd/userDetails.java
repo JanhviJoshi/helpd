@@ -4,23 +4,22 @@ public class userDetails {
     private String name;
     private String number;
     private String address;
-    private String helpPref;
-    private String timings;
-    private UserPref preference= new UserPref();
+    private String landmark;
+    private String city;
+    private String pincode;
 
 
     public userDetails() {
     }
 
-    public userDetails(String name, String number, String address, String helpPref, String timings, UserPref preference) {
+    public userDetails(String name, String number, String address,String landmark, String city, String pincode) {
         this.name = name;
         this.number = number;
         this.address = address;
-        this.helpPref = helpPref;
-        this.timings = timings;
-        this.preference= preference;
+        this.landmark = landmark;
+        this.city = city;
+        this.pincode= pincode;
     }
-
 
     public String getName() {
         return name;
@@ -46,27 +45,27 @@ public class userDetails {
         this.address = address;
     }
 
-    public String getHelpPref() {
-        return helpPref;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setHelpPref(String helpPref) {
-        this.helpPref = helpPref;
+    public void setLandmark(String landmark) {
+        this.landmark = landmark;
     }
 
-    public String getTimings() {
-        return timings;
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
     }
 
-    public void setTimings(String timings) {
-        this.timings = timings;
+    public String getCity() {
+        return city;
     }
 
-    public void setPreference(UserPref preference) {
-        this.preference = preference;
+    public String getLandmark() {
+        return landmark;
     }
 
-    public UserPref getPreference() {
-        return preference;
+    public String getPincode() {
+        return pincode;
     }
 }
