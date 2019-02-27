@@ -33,7 +33,4 @@ the user's.
 - *Janhvi Joshi* 
 - *Suvrat Jain*
 - *Saurabh Agarwal*
-- *Aman Mishra* 
 
-## APK File
-https://drive.google.com/file/d/1xT-vJ1v7ni0vWwwO8Rk-_fhnhI3Dl3NK/view?usp=sharing
