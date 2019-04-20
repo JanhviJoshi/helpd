@@ -1,71 +1,113 @@
 package com.example.user.helpd;
 
-public class userDetails {
+public class UserDetails {
     private String name;
     private String number;
     private String address;
-    private String landmark;
     private String city;
-    private String pincode;
+    private String email;
+    private double latitude;
+    private double longitude;
+    private String helperid;
+
+    private String services;
+    private int timings;
 
 
-    public userDetails() {
+
+    public UserDetails() {
     }
 
-    public userDetails(String name, String number, String address,String landmark, String city, String pincode) {
-        this.name = name;
-        this.number = number;
-        this.address = address;
-        this.landmark = landmark;
-        this.city = city;
-        this.pincode= pincode;
+   /* public UserDetails(String name, String number,  String email, double latitude, double longitude){
+        this.name= name;
+        this.number= number;
+        this.email= email;
+        this.latitude= latitude;
+        this.longitude= longitude;
+    }
+
+    public UserDetails(String services, int timings){
+        this.services=services;
+        this.timings=timings;
+    } */
+
+    public String getCity() {
+        return city;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getAddress() {
+        return address;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public String getAddress() {
-        return address;
+    public String getServices() {
+        return services;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public int getTimings() {
+        return timings;
+    }
+
+    public String getHelperid() {
+        return helperid;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
-    public void setLandmark(String landmark) {
-        this.landmark = landmark;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCity() {
-        return city;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public String getLandmark() {
-        return landmark;
+    public void setServices(String services) {
+        this.services = services;
     }
 
-    public String getPincode() {
-        return pincode;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTimings(int timings) {
+        this.timings = timings;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setHelperid(String helperid) {
+        this.helperid = helperid;
     }
 }
