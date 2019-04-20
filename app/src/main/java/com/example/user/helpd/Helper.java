@@ -1,14 +1,35 @@
 package com.example.user.helpd;
 
-public class helper {
+public class Helper {
 
     private String services;
     private int timings;
     private String name;
+    private int id;
 
-    public helper() {}
+    public String getUserId() {
+        return userId;
+    }
 
-    public helper(String services, int timings, String name)
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    String userId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
+    public Helper() {}
+
+    public Helper(String services, int timings, String name)
     {
         this.services= services;
         this.timings= timings;

@@ -75,14 +75,17 @@ public class Preferences extends AppCompatActivity {
 
                 }
 
-               UserPref user2= new UserPref(code, time);
-                databaseReference.child("preference").child(contactKey).setValue(user2);
+                UserDetails user2= new UserDetails();
+                user2.setServices(code);
+                user2.setTimings(time);
 
-                //when passing after login details, copy user1 ke name and all in user2
+               //UserDetails user2= new UserDetails(code, time);
+                databaseReference.child("user").child(contactKey).child("preferences").setValue(user2);
 
                 Intent i= new Intent(Preferences.this, Available.class);
-                i.putExtra("preference",user2.getHelpPref());
+                i.putExtra("preference",user2.getServices());
                 i.putExtra("timings", user2.getTimings());
+                i.putExtra("contactKey", contactKey);
                 startActivity(i);
             }
         });

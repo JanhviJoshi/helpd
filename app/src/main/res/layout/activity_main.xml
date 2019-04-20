@@ -75,6 +75,19 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_txt"
+                android:hint="Email"
+                android:padding="10dp"
+                android:textColorHint="#111111"
+                android:textSize="20dp" />
+
+
+            <EditText
                 android:hint="Username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +96,9 @@
                 android:background="@drawable/edit_txt"
                 android:id="@+id/username"
                 android:padding="10dp"
-                android:textColorHint="#111111" />
+                android:textColorHint="#111111"
+                android:visibility="invisible"
+                />
 
             <EditText
                 android:id="@+id/contact"
@@ -107,7 +122,8 @@
                 android:hint="Address"
                 android:padding="10dp"
                 android:textColorHint="#111111"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:visibility="invisible"/>
 
             <EditText
                 android:id="@+id/landmark"
@@ -119,7 +135,8 @@
                 android:hint="Landmark"
                 android:padding="10dp"
                 android:textColorHint="#111111"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:visibility="invisible"/>
 
             <EditText
                 android:id="@+id/city"
@@ -130,7 +147,8 @@
                 android:hint="City"
                 android:padding="10dp"
                 android:textColorHint="#111111"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:visibility="invisible"/>
 
             <EditText
                 android:id="@+id/pincode"
@@ -142,7 +160,14 @@
                 android:hint="Pincode"
                 android:padding="10dp"
                 android:textColorHint="#111111"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:visibility="invisible"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="detect location"
+                android:id="@+id/loc"/>
+
         </LinearLayout>
 
         <android.support.constraint.Guideline
