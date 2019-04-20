@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class AvailableAdapter extends RecyclerView.Adapter< AvailableAdapter.MyViewHolder>{
@@ -33,13 +32,13 @@ public class AvailableAdapter extends RecyclerView.Adapter< AvailableAdapter.MyV
 
     @Override
     public void onBindViewHolder(@NonNull AvailableAdapter.MyViewHolder holder, int position) {
-    Helper helper= mHelper.get(position);
+    final Helper helper= mHelper.get(position);
     holder.bind(helper);
 
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            callback.friendCallback();
+            callback.friendCallback(helper);
         }
     });
 
@@ -76,6 +75,6 @@ class MyViewHolder extends RecyclerView.ViewHolder{
 }
 
 public interface Callback{
-        public void friendCallback();
+        public void friendCallback(Helper helper);
 }
 }

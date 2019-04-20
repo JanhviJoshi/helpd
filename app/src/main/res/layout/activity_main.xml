@@ -20,7 +20,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="100dp"
@@ -30,7 +30,7 @@
             android:padding="16dp"
             android:paddingLeft="50sp"
             android:paddingRight="50sp"
-            android:text="Login"
+            android:text="Signup"
             android:textAllCaps="false"
             android:textColor="#fafafa"
             android:textColorHighlight="@color/colorPrimaryDark"
@@ -78,7 +78,6 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/edit_txt"
                 android:hint="Email"
@@ -88,16 +87,16 @@
 
 
             <EditText
-                android:hint="Username"
+                android:hint="Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/edit_txt"
-                android:id="@+id/username"
+                android:id="@+id/pw"
                 android:padding="10dp"
                 android:textColorHint="#111111"
-                android:visibility="invisible"
+
                 />
 
             <EditText

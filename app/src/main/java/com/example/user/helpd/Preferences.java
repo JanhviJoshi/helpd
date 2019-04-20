@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,7 +22,7 @@ public class Preferences extends AppCompatActivity {
     private RadioButton rb_cook;
     private RadioButton rb_morn;
     private RadioButton rb_eve;
-    private Button button;
+    private Button button, signout;
     private Button login;
     private DatabaseReference databaseReference;
     private String code;
@@ -41,10 +43,11 @@ public class Preferences extends AppCompatActivity {
         rb_morn=(RadioButton)findViewById(R.id.morn);
         button= (Button)findViewById(R.id.button);
         login= (Button)findViewById(R.id.login);
+        signout= findViewById(R.id.signout);
 
         /**** getting data from intent *****/
         Bundle data= getIntent().getExtras();
-        final String contactKey= data.getString("contactKey");
+       final String uniqueKey= FirebaseAuth.getInstance().getUid();
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -80,15 +83,28 @@ public class Preferences extends AppCompatActivity {
                 user2.setTimings(time);
 
                //UserDetails user2= new UserDetails(code, time);
-                databaseReference.child("user").child(contactKey).child("preferences").setValue(user2);
+                databaseReference.child("user").child(uniqueKey).child("preferences").setValue(user2);
 
                 Intent i= new Intent(Preferences.this, Available.class);
                 i.putExtra("preference",user2.getServices());
                 i.putExtra("timings", user2.getTimings());
-                i.putExtra("contactKey", contactKey);
+                i.putExtra("uniqueKey", uniqueKey);
                 startActivity(i);
             }
         });
 
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(Preferences.this, "Signed Out", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Preferences.this, LoginActivity.class));
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

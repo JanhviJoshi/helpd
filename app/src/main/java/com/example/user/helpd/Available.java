@@ -81,9 +81,9 @@ public class Available extends AppCompatActivity implements AvailableAdapter.Cal
 
     }
 
-    public void friendCallback(){
+    public void friendCallback(Helper helper){
         Intent intent= new Intent(this, ClickHelperDetails.class);
-        intent.putExtra("id", helped.getId());
+        intent.putExtra("id", helper.getId());
         intent.putExtra("contactKey", contactKey);
         startActivity(intent);
     }

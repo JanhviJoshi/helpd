@@ -18,13 +18,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -32,13 +35,13 @@ import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Places;
 
-public class MainActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
 
 
     private DrawerLayout drawerLayout;
-    private EditText username, contact, address, city, email;
-    private Button login, detect;
+    private EditText  pw, contact, address, city, email;
+    private Button signup, detect;
     private DatabaseReference databaseReference;
 
     private GeoDataClient mGeoDataClient;
@@ -76,13 +79,16 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        username = (EditText) findViewById(R.id.username);
+        //username = (EditText) findViewById(R.id.email);
         contact = (EditText) findViewById(R.id.contact);
        // address = (EditText) findViewById(R.id.address);
        // city = (EditText) findViewById(R.id.city);
-        login = (Button) findViewById(R.id.login);
+        signup = (Button) findViewById(R.id.signup);
         email= (EditText) findViewById(R.id.email);
+        pw= findViewById(R.id.pw);
+
         detect=(Button)findViewById(R.id.loc);
+
 
         final UserDetails userDetails = new UserDetails();
 
@@ -113,21 +119,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference = FirebaseDatabase.getInstance().getReference();
-                String n, c, add, cy, em;
-                n = username.getText().toString();
-                c = contact.getText().toString();
-                em= email.getText().toString();
+                //databaseReference = FirebaseDatabase.getInstance().getReference();
+                //String n, c, add, cy, em;
+                //n = username.getText().toString();
+                //c = contact.getText().toString();
+                String em= email.getText().toString();
+                String password= pw.getText().toString();
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(em, password)
+                        .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    showToast("Signup successful");
+                                    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+                                    updateUi(user);
+                                }
+                                else{
+                                    showToast("Unsuccessful");
+                                    task.getException().printStackTrace();
+                                    updateUi(null);
+                                }
+                            }
+                        });
+
+
 
                 //getting current location
                 //getLocationPermission();
 
 
                 //userDetails.setName(n);
-                userDetails.setNumber(c);
+            /*    userDetails.setNumber(c);
                 userDetails.setEmail(em);
                 userDetails.setLatitude(latitude);
                 userDetails.setLongitude(longitude);
@@ -139,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
                 databaseReference.child("user").child(c).setValue(userDetails); //sending the login details to database
 
 
-                Intent i = new Intent(MainActivity.this, Preferences.class);
+                Intent i = new Intent(SignupActivity.this, Preferences.class);
                 i.putExtra("contactKey", c);
-                startActivity(i);
+                startActivity(i); */
             }
         });
     }
@@ -226,5 +252,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //showLoginPage(false);
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        updateUi(user);
+    }
+
     /*********************************************************************************************************/
+
+
+    public void updateUi(FirebaseUser user){
+        if(user!=null){
+            startActivity(new Intent(SignupActivity.this, Preferences.class));
+        }//else
+          //  showLoginPage(true);
+    }
+
+
+
+    public void showToast(String msg){
+        Toast.makeText(SignupActivity.this, msg, Toast.LENGTH_SHORT).show();
+    }
 }
