@@ -68,52 +68,66 @@ public class Preferences extends AppCompatActivity {
                 /*** Getting help preference ***/
                databaseReference = FirebaseDatabase.getInstance().getReference();
                 int id1= radioGroup1.getCheckedRadioButtonId();
+                int id2= radioGroup2.getCheckedRadioButtonId();
+                System.out.println("VALUES OF ID1 ID2" +id1+" "+id2);
 
-                switch(id1)
-                {
-                    case R.id.cooking_radiobutton: code= "cook";
-                                    break;
-                    case R.id.cleaning_radiobutton: code="clean";
-                                    break;
-                    case R.id.washing_radiobutton: code= "wash";
-                                    break;
-                    case R.id.dusting_radiobutton: code= "dust";
-                                    break;
-                }
+                if(id1!=-1 && id2!=-1) {
+                    switch (id1) {
+                        case R.id.cooking_radiobutton:
+                            code = "cook";
+                            break;
+                        case R.id.cleaning_radiobutton:
+                            code = "clean";
+                            break;
+                        case R.id.washing_radiobutton:
+                            code = "wash";
+                            break;
+                        case R.id.dusting_radiobutton:
+                            code = "dust";
+                            break;
+                    }
 
-                /*** getting time pref ***/
-               int id2= radioGroup2.getCheckedRadioButtonId();
-                switch(id2)
-                {
-                    case R.id.radioButton_3to4: time= 1;
-                        break;
-                    case R.id.radioButton_4to5: time= 2;
-                        break;
-                    case R.id.radioButton_5to6: time=3;
-                        break;
-                    case R.id.radioButton_6to7: time=4;
-                        break;
-                    case R.id.radioButton_8to9: time= 5;
-                        break;
-                    case R.id.radioButton_9to10: time=6;
-                        break;
-                    case R.id.radioButton_10to11: time=7;
-                        break;
+                    /*** getting time pref ***/
 
-                }
+                    switch (id2) {
+                        case R.id.radioButton_3to4:
+                            time = 1;
+                            break;
+                        case R.id.radioButton_4to5:
+                            time = 2;
+                            break;
+                        case R.id.radioButton_5to6:
+                            time = 3;
+                            break;
+                        case R.id.radioButton_6to7:
+                            time = 4;
+                            break;
+                        case R.id.radioButton_8to9:
+                            time = 5;
+                            break;
+                        case R.id.radioButton_9to10:
+                            time = 6;
+                            break;
+                        case R.id.radioButton_10to11:
+                            time = 7;
+                            break;
 
-                UserPref user2= new UserPref();
-                user2.setHelpPref(code);
-                user2.setTimings(time);
+                    }
 
-               //UserDetails user2= new UserDetails(code, time);
-                databaseReference.child("user").child(uniqueKey).child("preferences").setValue(user2);
+                    UserPref user2 = new UserPref();
+                    user2.setHelpPref(code);
+                    user2.setTimings(time);
 
-                Intent i= new Intent(Preferences.this, Available.class);
-                i.putExtra("preference",user2.getHelpPref());
-                i.putExtra("timings", user2.getTimings());
-                i.putExtra("uniqueKey", uniqueKey);
-                startActivity(i);
+                    //UserDetails user2= new UserDetails(code, time);
+                    databaseReference.child("user").child(uniqueKey).child("preferences").setValue(user2);
+
+                    Intent i = new Intent(Preferences.this, Available.class);
+                    i.putExtra("preference", user2.getHelpPref());
+                    i.putExtra("timings", user2.getTimings());
+                    i.putExtra("uniqueKey", uniqueKey);
+                    startActivity(i);
+                }else
+                    Toast.makeText(Preferences.this, "Please Enter Full Details", Toast.LENGTH_SHORT).show();
             }
         });
 

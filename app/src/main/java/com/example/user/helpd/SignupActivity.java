@@ -124,10 +124,6 @@ public class SignupActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ProgressDialog progress = new ProgressDialog(SignupActivity.this);
-                progress.setCancelable(true);
-                progress.setTitle("Logging in..");
-                progress.show();
                 databaseReference = FirebaseDatabase.getInstance().getReference();
                 //String n, c, add, cy, em;
                 //n = username.getText().toString();
@@ -135,29 +131,36 @@ public class SignupActivity extends AppCompatActivity {
                 String em= email.getText().toString();
                 String password= pw.getText().toString();
 
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(em, password)
-                        .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    progress.dismiss();
-                                    showToast("Signup Successful");
-                                    userDetails.setLatitude(latitude);
-                                    userDetails.setLongitude(longitude);
-                                    databaseReference.child("user").child(FirebaseAuth.getInstance().getUid()).setValue(userDetails);
 
-                                    FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-                                    updateUi(user);
+                if(!(em.isEmpty() && password.isEmpty())) {
+                    final ProgressDialog progress = new ProgressDialog(SignupActivity.this);
+                    progress.setCancelable(true);
+                    progress.setTitle("Logging in..");
+                    progress.show();
+
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(em, password)
+                            .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        progress.dismiss();
+                                        showToast("Signup Successful");
+                                        userDetails.setLatitude(latitude);
+                                        userDetails.setLongitude(longitude);
+                                        databaseReference.child("user").child(FirebaseAuth.getInstance().getUid()).setValue(userDetails);
+
+                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                        updateUi(user);
+                                    } else {
+                                        showToast("Unsuccessful");
+                                        task.getException().printStackTrace();
+                                        updateUi(null);
+                                    }
                                 }
-                                else{
-                                    showToast("Unsuccessful");
-                                    task.getException().printStackTrace();
-                                    updateUi(null);
-                                }
-                            }
-                        });
+                            });
 
-
+                }else
+                    showToast("Error: Fields Empty");
 
                 //getting current location
                 //getLocationPermission();

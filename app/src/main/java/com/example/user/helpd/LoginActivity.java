@@ -48,30 +48,35 @@ public class LoginActivity extends AppCompatActivity {
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String email = e.getText().toString();
+                    String password = pw.getText().toString();
+
+                    if (!(email.isEmpty() && password.isEmpty())) {
                     final ProgressDialog progress = new ProgressDialog(LoginActivity.this);
                     progress.setCancelable(true);
                     progress.setTitle("Logging in..");
                     progress.show();
-                    String email = e.getText().toString();
-                    String password = pw.getText().toString();
 
+                        mAuth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            FirebaseUser user = mAuth.getCurrentUser();
+                                            progress.dismiss();
+                                            updateUi(user);
+                                        } else {
+                                            progress.dismiss();
+                                            updateUi(null);
 
-                    mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        progress.dismiss();
-                                        updateUi(user);
-                                    } else {
-                                        progress.dismiss();
-                                        updateUi(null);
-
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }else{
+                        showToast("Error: Fields Empty");
+                    }
                 }
+
             });
 
             Signup.setOnClickListener(new View.OnClickListener() {
