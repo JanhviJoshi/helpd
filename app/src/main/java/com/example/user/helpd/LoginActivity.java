@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                     String email = e.getText().toString();
                     String password = pw.getText().toString();
 
-                    if (!(email.isEmpty() && password.isEmpty())) {
+                    if (!email.isEmpty() && !password.isEmpty()) {
                     final ProgressDialog progress = new ProgressDialog(LoginActivity.this);
                     progress.setCancelable(true);
                     progress.setTitle("Logging in..");

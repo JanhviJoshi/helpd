@@ -132,7 +132,7 @@ public class SignupActivity extends AppCompatActivity {
                 String password= pw.getText().toString();
 
 
-                if(!(em.isEmpty() && password.isEmpty())) {
+                if(!em.isEmpty() && !password.isEmpty()) {
                     final ProgressDialog progress = new ProgressDialog(SignupActivity.this);
                     progress.setCancelable(true);
                     progress.setTitle("Logging in..");
@@ -152,6 +152,7 @@ public class SignupActivity extends AppCompatActivity {
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                         updateUi(user);
                                     } else {
+                                        progress.dismiss();
                                         showToast("Unsuccessful");
                                         task.getException().printStackTrace();
                                         updateUi(null);

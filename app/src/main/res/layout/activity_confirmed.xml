@@ -11,4 +11,15 @@
         android:layout_height="match_parent"
         android:text="CONFIRMED"/>
 
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="#A6E78F"
+        android:text="Ok"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
