@@ -1,5 +1,6 @@
 package com.example.user.helpd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,10 @@ public class Available extends AppCompatActivity implements AvailableAdapter.Cal
 
         LinearLayoutManager layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        final ProgressDialog progress = new ProgressDialog(Available.this);
+        progress.setCancelable(false);
+        progress.setTitle("Searching..");
+        progress.show();
 
         final AvailableAdapter adapter= new AvailableAdapter(Available.this);
         //AvailableAdapter adapter= new AvailableAdapter(chosenHelper);
@@ -47,7 +52,7 @@ public class Available extends AppCompatActivity implements AvailableAdapter.Cal
 
         final String preference= firstData.getString("preference");
         final int timings= secondData.getInt("timings");
-        contactKey= thirdData.getString("contactKey");
+        contactKey= thirdData.getString("uniqueKey");
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("helper");
@@ -68,7 +73,7 @@ public class Available extends AppCompatActivity implements AvailableAdapter.Cal
                     //AvailableAdapter adapter= new AvailableAdapter(chosenHelper);
                     //recyclerView.setAdapter(adapter);
                     //System.out.println("adapter set");
-
+                    progress.dismiss();
                     adapter.setData(chosenHelper);
                 }
             }
@@ -84,7 +89,7 @@ public class Available extends AppCompatActivity implements AvailableAdapter.Cal
     public void friendCallback(Helper helper){
         Intent intent= new Intent(this, ClickHelperDetails.class);
         intent.putExtra("id", helper.getId());
-        intent.putExtra("contactKey", contactKey);
+        intent.putExtra("uniqueKey", contactKey);
         startActivity(intent);
     }
 }

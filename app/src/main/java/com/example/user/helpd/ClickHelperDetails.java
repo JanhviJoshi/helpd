@@ -1,5 +1,6 @@
 package com.example.user.helpd;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 public class ClickHelperDetails extends AppCompatActivity {
 
     private static final String TAG = "Click helper";
@@ -29,6 +32,9 @@ public class ClickHelperDetails extends AppCompatActivity {
         final TextView name= findViewById(R.id.textViewName);
         final TextView serv= findViewById(R.id.textViewServices);
         final TextView time= findViewById(R.id.textViewTime);
+        final TextView rate= findViewById(R.id.rating_textview);
+        final TextView fee= findViewById(R.id.price_textView);
+        final TextView contact= findViewById(R.id.phonenumber_textView);
         Button button= findViewById(R.id.button);
 
         /** receiving ID from Available.java **/
@@ -36,7 +42,7 @@ public class ClickHelperDetails extends AppCompatActivity {
         Bundle data2= getIntent().getExtras();
         final int id= data.getInt("id");
         Log.i(TAG, "HelperId: "+ id+" ");
-        contactKey= data2.getString("contactKey");
+        contactKey= data2.getString("uniqueKey");
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("helper").child(String.valueOf(id));
 
@@ -49,6 +55,9 @@ public class ClickHelperDetails extends AppCompatActivity {
                         name.setText(mhelper.getName());
                         serv.setText(mhelper.getServices());
                         time.setText(String.valueOf(mhelper.getTimings()));
+                        rate.setText(String.valueOf(mhelper.getRate()));
+                        fee.setText(mhelper.getFee());
+                        contact.setText(mhelper.getContact());
                    // }
                 }
             }
@@ -62,7 +71,7 @@ public class ClickHelperDetails extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                   // confirm();
+
                // mhelper.setUserId(contactKey);
                 FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
                 mhelper.setUserId(String.valueOf(user));
@@ -72,12 +81,11 @@ public class ClickHelperDetails extends AppCompatActivity {
                 DatabaseReference dr= FirebaseDatabase.getInstance().getReference("helper");
                 dr.child(id).setValue(mhelper);
                 //registered!
+                Toast.makeText(ClickHelperDetails.this, "Confirmed", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ClickHelperDetails.this, ConfirmedActivity.class));
             }
         });
 
     }
 
-    public void confirm(){
-
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.user.helpd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -34,6 +35,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Places;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -62,17 +64,17 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signup);
 
 //        Places.initialize(getApplicationContext(), "AIzaSyCmfK32HN7Ovg6YsSoOIISc_8Z9z96ftHY");
 //        PlacesClient placesClient = Places.createClient(this);
 
         /***** applying toolbar as the app bar  and setting the hamburger icon *****/
-        Toolbar toolbar = findViewById(R.id.toolbar);
+     /*   Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu); */
         /***************************************************************************/
 
 
@@ -80,7 +82,7 @@ public class SignupActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         //username = (EditText) findViewById(R.id.email);
-        contact = (EditText) findViewById(R.id.contact);
+        //contact = (EditText) findViewById(R.id.contact);
        // address = (EditText) findViewById(R.id.address);
        // city = (EditText) findViewById(R.id.city);
         signup = (Button) findViewById(R.id.signup);
@@ -98,7 +100,7 @@ public class SignupActivity extends AppCompatActivity {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         /*************************************************************************************************/
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+     /*   navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
@@ -108,7 +110,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 return true;
             }
-        });
+        }); */
 
         detect.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -122,7 +124,11 @@ public class SignupActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //databaseReference = FirebaseDatabase.getInstance().getReference();
+                final ProgressDialog progress = new ProgressDialog(SignupActivity.this);
+                progress.setCancelable(true);
+                progress.setTitle("Logging in..");
+                progress.show();
+                databaseReference = FirebaseDatabase.getInstance().getReference();
                 //String n, c, add, cy, em;
                 //n = username.getText().toString();
                 //c = contact.getText().toString();
@@ -134,7 +140,12 @@ public class SignupActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    showToast("Signup successful");
+                                    progress.dismiss();
+                                    showToast("Signup Successful");
+                                    userDetails.setLatitude(latitude);
+                                    userDetails.setLongitude(longitude);
+                                    databaseReference.child("user").child(FirebaseAuth.getInstance().getUid()).setValue(userDetails);
+
                                     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
                                     updateUi(user);
                                 }
@@ -237,6 +248,7 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
+                            Toast.makeText(SignupActivity.this, "Current Location Fetched!", Toast.LENGTH_SHORT).show();
                             mLastKnownLocation = (Location)task.getResult();
                             latitude= mLastKnownLocation.getLatitude();
                             longitude= mLastKnownLocation.getLongitude();

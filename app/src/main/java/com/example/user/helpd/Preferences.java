@@ -1,5 +1,6 @@
 package com.example.user.helpd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,8 +21,9 @@ public class Preferences extends AppCompatActivity {
     private RadioButton rb_clean;
     private RadioButton rb_wash;
     private RadioButton rb_cook;
-    private RadioButton rb_morn;
-    private RadioButton rb_eve;
+    private RadioButton rb_dust;
+    private RadioButton rb_9_10;
+    private RadioButton rb_8_9, rb_10_11, rb_11_12, rb_3_4, rb_4_5, rb_5_6, rb_6_7;
     private Button button, signout;
     private Button login;
     private DatabaseReference databaseReference;
@@ -36,11 +38,21 @@ public class Preferences extends AppCompatActivity {
 
         radioGroup1= (RadioGroup)findViewById(R.id.rad_help_pref);
         radioGroup2= (RadioGroup)findViewById(R.id.rad_time_pref);
-        rb_clean= (RadioButton) findViewById(R.id.clean);
-        rb_cook= (RadioButton)findViewById(R.id.cook);
-        rb_wash= (RadioButton)findViewById(R.id.wash);
-        rb_eve=(RadioButton)findViewById(R.id.eve);
-        rb_morn=(RadioButton)findViewById(R.id.morn);
+        rb_clean= (RadioButton) findViewById(R.id.cleaning_radiobutton);
+        rb_cook= (RadioButton)findViewById(R.id.cooking_radiobutton);
+        rb_wash= (RadioButton)findViewById(R.id.washing_radiobutton);
+        rb_dust= (RadioButton)findViewById(R.id.dusting_radiobutton);
+
+        rb_8_9=(RadioButton)findViewById(R.id.radioButton_8to9);
+        rb_9_10=(RadioButton)findViewById(R.id.radioButton_9to10);
+        rb_10_11= findViewById(R.id.radioButton_10to11);
+        rb_11_12= findViewById(R.id.radioButton_11to12);
+        rb_3_4= findViewById(R.id.radioButton_3to4);
+        rb_4_5= findViewById(R.id.radioButton_4to5);
+        rb_5_6= findViewById(R.id.radioButton_5to6);
+        rb_6_7= findViewById(R.id.radioButton_6to7);
+
+
         button= (Button)findViewById(R.id.button);
         login= (Button)findViewById(R.id.login);
         signout= findViewById(R.id.signout);
@@ -59,11 +71,13 @@ public class Preferences extends AppCompatActivity {
 
                 switch(id1)
                 {
-                    case R.id.cook: code= "cook";
+                    case R.id.cooking_radiobutton: code= "cook";
                                     break;
-                    case R.id.clean: code="clean";
+                    case R.id.cleaning_radiobutton: code="clean";
                                     break;
-                    case R.id.wash: code= "wash";
+                    case R.id.washing_radiobutton: code= "wash";
+                                    break;
+                    case R.id.dusting_radiobutton: code= "dust";
                                     break;
                 }
 
@@ -71,22 +85,32 @@ public class Preferences extends AppCompatActivity {
                int id2= radioGroup2.getCheckedRadioButtonId();
                 switch(id2)
                 {
-                    case R.id.morn: time= 1;
+                    case R.id.radioButton_3to4: time= 1;
                         break;
-                    case R.id.eve: time= 7;
+                    case R.id.radioButton_4to5: time= 2;
+                        break;
+                    case R.id.radioButton_5to6: time=3;
+                        break;
+                    case R.id.radioButton_6to7: time=4;
+                        break;
+                    case R.id.radioButton_8to9: time= 5;
+                        break;
+                    case R.id.radioButton_9to10: time=6;
+                        break;
+                    case R.id.radioButton_10to11: time=7;
                         break;
 
                 }
 
-                UserDetails user2= new UserDetails();
-                user2.setServices(code);
+                UserPref user2= new UserPref();
+                user2.setHelpPref(code);
                 user2.setTimings(time);
 
                //UserDetails user2= new UserDetails(code, time);
                 databaseReference.child("user").child(uniqueKey).child("preferences").setValue(user2);
 
                 Intent i= new Intent(Preferences.this, Available.class);
-                i.putExtra("preference",user2.getServices());
+                i.putExtra("preference",user2.getHelpPref());
                 i.putExtra("timings", user2.getTimings());
                 i.putExtra("uniqueKey", uniqueKey);
                 startActivity(i);

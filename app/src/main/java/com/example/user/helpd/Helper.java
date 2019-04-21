@@ -5,6 +5,34 @@ public class Helper {
     private String services;
     private int timings;
     private String name;
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String price) {
+        this.contact = price;
+    }
+
+    private int rate;
+    private String fee;
+    private String contact;
     private int id;
 
     public String getUserId() {

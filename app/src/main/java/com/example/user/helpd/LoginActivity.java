@@ -1,5 +1,6 @@
 package com.example.user.helpd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "Login Activity";
     EditText e, pw;
-    Button login, signup;
+    Button login, Signup;
     FirebaseAuth mAuth;
 
 
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         e= findViewById(R.id.email);
         pw= findViewById(R.id.password);
         login= findViewById(R.id.login);
-        signup= findViewById(R.id.signup);
+        Signup= findViewById(R.id.signup);
 
         mAuth= FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser()!=null) {
@@ -47,8 +48,13 @@ public class LoginActivity extends AppCompatActivity {
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    final ProgressDialog progress = new ProgressDialog(LoginActivity.this);
+                    progress.setCancelable(true);
+                    progress.setTitle("Logging in..");
+                    progress.show();
                     String email = e.getText().toString();
                     String password = pw.getText().toString();
+
 
                     mAuth.signInWithEmailAndPassword(email, password)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -56,16 +62,19 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         FirebaseUser user = mAuth.getCurrentUser();
+                                        progress.dismiss();
                                         updateUi(user);
                                     } else {
+                                        progress.dismiss();
                                         updateUi(null);
+
                                     }
                                 }
                             });
                 }
             });
 
-            signup.setOnClickListener(new View.OnClickListener() {
+            Signup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //start sign up activity
@@ -89,10 +98,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void updateUi(FirebaseUser user){
         if(user!=null){
-            showToast("login successful");
+            showToast("Login Successful!");
             startActivity(new Intent(LoginActivity.this, Preferences.class));
         }else {
-            showToast("invalid cred");
+            showToast("Invalid Credentials. Try Again");
             showLoginPage(true);
         }
     }

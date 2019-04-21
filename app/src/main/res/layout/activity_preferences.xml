@@ -1,64 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity"
     android:orientation="vertical">
 
-    <RadioGroup
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/preferences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Preferences"
+                android:textColor="#A6E78F"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/seperator1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/preferences" />
+
+            <RadioGroup
+                android:id="@+id/rad_help_pref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/preferences">
+
+
+                <RadioButton
+                    android:id="@+id/cleaning_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="Cleaning"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/washing_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="Washing"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/cooking_radiobutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="Cooking"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/dusting_radiobutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="Dusting"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+        <TextView
+            android:id="@+id/timings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="400dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="Timings"
+            android:textColor="#A6E78F"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/seperator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timings" />
+
+            <RadioGroup
+                android:id="@+id/rad_time_pref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timings">
+
+                <RadioButton
+                    android:id="@+id/radioButton_8to9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="8am - 9am"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_9to10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="9am - 10am"
+                    android:textSize="16sp" />
+
+
+                <RadioButton
+                    android:id="@+id/radioButton_10to11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="10am - 11am"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_11to12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="11am - 12am"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_3to4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="3pm - 4pm"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_4to5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="4pm - 5pm"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_5to6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="5pm - 6pm"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_6to7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/greenbutton"
+                    android:padding="8dp"
+                    android:text="6pm - 7pm"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rad_help_pref">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/wash"
-            android:text="wash"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cook"
-            android:text="cook" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/clean"
-            android:text="clean"/>
-    </RadioGroup>
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rad_time_pref">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/eve"
-            android:text="eve" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/morn"
-            android:text="morn" />
-
-    </RadioGroup>
-
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="#A6E78F"
+        android:text="SEARCH"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signout"
-        android:text="Signout"/>
-</LinearLayout>
+        <Button
+            android:id="@+id/signout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#A6E78F"
+            android:text="Signout"
+            android:layout_weight="4"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
